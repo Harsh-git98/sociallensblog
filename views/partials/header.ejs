@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SocialLensBlog</title>
   <link rel="icon" href="img/sociallogo.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"> <!-- Importing cursive font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     /* Global styles */
     body {
@@ -20,104 +20,148 @@
 
     /* Navbar styles */
     .navbar {
-      border: none;
-      border-radius: 0;
+      width: 100%;
       background-color: #7bdeefce;
       border-bottom: 1px solid black;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      transition: background-color 0.3s ease-in-out;
     }
 
     .navbar-brand {
-      color: #2e2d2d !important;
+      color: #2e2d2d;
       font-weight: bold;
       font-size: 1.8em;
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-family: 'Great Vibes', cursive; /* Cursive font for the title */
+      font-family: 'Indie Flower', cursive;
+      text-decoration: none;
+
+      
     }
 
-    .navbar-nav li a {
-      color: #2e2d2d !important;
+    .navbar-toggle {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 21px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: #2e2d2d;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-left: 20px;
+    }
+
+    .nav-links li a {
+      color: #2e2d2d;
+      text-decoration: none;
       font-weight: 600;
       padding: 15px 20px;
+      display: block;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .navbar-nav li a:hover {
+    .nav-links li a:hover {
       background-color: rgba(31, 29, 29, 0.2);
-      color: #ffeb3b !important;
-    }
-
-    .navbar-nav li a:focus {
-      background-color: rgba(46, 44, 44, 0.1);
-      outline: none;
+      color: #ffeb3b;
     }
 
     /* Mobile adjustments */
     @media (max-width: 767px) {
-      .navbar-nav {
-        text-align: center;
-      }
-
-      .navbar-nav li {
-        float: none;
-      }
-
-      .navbar-nav li a {
-        padding: 10px 15px;
-        font-size: 1.1em;
-      }
-
-      .navbar-header {
-        float: none;
-        text-align: center; /* Center align brand and toggle button */
-      }
-
-      .navbar-collapse {
-        max-height: 300px;
-        overflow-y: auto; /* Scrollable dropdown on small screens */
-      }
-
       .navbar-toggle {
-        display: inline-block;
-        margin: 8px 15px;
+        display: flex;
       }
+      .navbar-brand {
+      color: #2e2d2d;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Indie Flower', cursive;
+      text-decoration: none;
 
-      .navbar-toggle .icon-bar {
-        background-color: #2e2d2d; /* Color of the toggle bars */
-      }
+      
     }
 
-    @media (max-width: 576px) {
-      .navbar-brand {
-        font-size: 1.5em;
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        height: 100vh;
+        width: 200px;
+        background-color: #7bdeefce;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
       }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      /* .navbar-toggle.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .navbar-toggle.active div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .navbar-toggle.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      } */
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="/" class="navbar-brand">The Social Lens Blog</a>
-      </div>
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li id="home"><a href="/">Home</a></li>
-          <li id="about"><a href="/about">About Us</a></li>
-          <li id="contact"><a href="/contact">Contact Us</a></li>
-        </ul>
-      </div>
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">The Social Lens Blog</a>
+    <div class="navbar-toggle" id="mobile-menu">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/contact">Contact Us</a></li>
+    </ul>
   </nav>
-  <br><br>
+  <br><br><br><br>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <script>
+    // Toggle mobile menu
+    document.getElementById("mobile-menu").addEventListener("click", function () {
+      this.classList.toggle("active");
+      document.getElementById("nav-links").classList.toggle("active");
+    });
+  </script>
