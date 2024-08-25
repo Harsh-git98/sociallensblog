@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title>SocialLensBlog</title>
-    <link rel="icon" href="img/sociallogo.png" type="image/x-icon">
+  <link rel="icon" href="img/sociallogo.png" type="image/x-icon">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"> <!-- Importing cursive font -->
   <style>
     /* Global styles */
     body {
@@ -13,7 +14,6 @@
       padding: 0;
       font-family: Arial, sans-serif;
       color: #181717;
-      
       background-size: cover;
       background-position: center;
     }
@@ -23,37 +23,37 @@
       border: none;
       border-radius: 0;
       background-color: #7bdeefce;
-      border-bottom: 1px solid black; /* Slightly darker for more contrast */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+      border-bottom: 1px solid black;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .navbar-brand {
       color: #2e2d2d !important;
       font-weight: bold;
-      font-size: 1.5em;
+      font-size: 1.8em;
       text-transform: uppercase;
       letter-spacing: 2px;
+      font-family: 'Great Vibes', cursive; /* Cursive font for the title */
     }
 
     .navbar-nav li a {
       color: #2e2d2d !important;
       font-weight: 600;
-      padding: 15px 20px; /* Added more padding for a balanced look */
+      padding: 15px 20px;
     }
 
     .navbar-nav li a:hover {
       background-color: rgba(31, 29, 29, 0.2);
-      color: #ffeb3b !important; /* Added a bright hover color for the text */
+      color: #ffeb3b !important;
     }
 
     .navbar-nav li a:focus {
-      background-color: rgba(46, 44, 44, 0.1); /* Focus effect for accessibility */
+      background-color: rgba(46, 44, 44, 0.1);
       outline: none;
     }
 
-   
     /* Mobile adjustments */
-    @media (max-width: 967px) {
+    @media (max-width: 767px) {
       .navbar-nav {
         text-align: center;
       }
@@ -64,15 +64,32 @@
 
       .navbar-nav li a {
         padding: 10px 15px;
-        font-size: 1.1em; /* Slightly larger font for touch devices */
+        font-size: 1.1em;
+      }
+
+      .navbar-header {
+        float: none;
+        text-align: center; /* Center align brand and toggle button */
+      }
+
+      .navbar-collapse {
+        max-height: 300px;
+        overflow-y: auto; /* Scrollable dropdown on small screens */
+      }
+
+      .navbar-toggle {
+        display: inline-block;
+        margin: 8px 15px;
+      }
+
+      .navbar-toggle .icon-bar {
+        background-color: #2e2d2d; /* Color of the toggle bars */
       }
     }
 
     @media (max-width: 576px) {
-    
-
       .navbar-brand {
-        font-size: 1.3em; /* Adjusted brand size for smaller screens */
+        font-size: 1.5em;
       }
     }
   </style>
@@ -88,9 +105,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-       
         <a href="/" class="navbar-brand">The Social Lens Blog</a>
-        
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -101,11 +116,7 @@
       </div>
     </div>
   </nav>
-  <br>
-  <br>
-  
-  
-
+  <br><br>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
