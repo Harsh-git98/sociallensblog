@@ -56,12 +56,12 @@ app.get("/contact", function(req, res) {
   res.render("contact", { contactContent: contactContent });
 });
 
-app.get("/compose", function(req, res) {
+app.get("/composedbyurvashi", function(req, res) {
   res.render("compose");
 });
 
 // Save the title and the post into our blogDB database
-app.post("/compose", function(req, res) {
+app.post("/composedbyurvashi", function(req, res) {
   const title = req.body.postTitle;
   const slug = _.kebabCase(title); // Convert title to a URL-friendly slug
 

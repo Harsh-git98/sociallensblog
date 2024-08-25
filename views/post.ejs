@@ -2,7 +2,7 @@
 
 <style>
     .post-main {
-        width:80vw;
+        width:100%;
         min-height:80vh; 
         height: 100%;
         max-width: 1000px;
@@ -35,6 +35,17 @@
         width: 80%;
         margin: 20px auto;
     }
+
+    /* Ensure all images inside the .post-main class do not exceed the viewport width */
+.post-main img {
+    max-width: 90vw;           /* Maximum width of 90% of the viewport width */
+    height: auto;              /* Maintain aspect ratio */
+    display: block;            /* Remove inline spacing */
+    margin: 0 auto;            /* Center the image horizontally */
+    overflow-x: hidden;        /* Hide horizontal overflow */
+}
+
+
 
     div {
         font-size: 1.2em;
@@ -73,6 +84,15 @@
         div {
             font-size: 0.9em;
         }
+        /* Ensure all images inside the .post-main class do not exceed the viewport width */
+.post-main img {
+    max-width: 90vw;           /* Maximum width of 90% of the viewport width */
+    height: auto;              /* Maintain aspect ratio */
+    display: block;            /* Remove inline spacing */
+    margin: 0 auto;            /* Center the image horizontally */
+    overflow-x: hidden;        /* Hide horizontal overflow */
+}
+
     }
 </style>
 <div>
@@ -86,3 +106,9 @@
 </div>
 </div>
 <%- include("partials/footer") %>
+<style>
+        img {
+    /* Hide horizontal overflow */
+}
+
+</style>
