@@ -1,32 +1,84 @@
 <%- include("partials/header") %>
 
 <style>
-    .post-main{
-        width: 90vw;
-        margin: 0 auto;
-        background-color: #b2f2fdce;
+    .post-main {
+        max-width: 1000px;
+        margin: 5vh auto;
+        background-color: #e3f7fc;
         padding: 20px;
-        margin-bottom: 10vh;
-
-
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     }
-    hr {
-    background-color: black; /* Sets the color of the hr */
-    height: 2px; /* Sets the thickness of the hr */
-    border: none; /* Removes any default borders */
-    width: 80%; /* Sets the horizontal length */
-    margin: 20px 0; /* Adds vertical spacing around the hr */
-}
 
+    h1 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p em {
+        display: block;
+        font-size: 1em;
+        color: #666;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        background-color: #444;
+        height: 2px;
+        border: none;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    div {
+        font-size: 1.2em;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .post-main {
+            width: 95%;
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        div {
+            font-size: 1em;
+        }
+
+        hr {
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .post-main {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+        }
+
+        div {
+            font-size: 0.9em;
+        }
+    }
 </style>
 
 <div class="post-main">
-<h1><%= title %></h1>
+    <h1><%= title %></h1>
 
-<p><em>Published on <%= date %></em></p>
-<hr>
-<div><%- content %></div>
+    <p><em>Published on <%= date %></em></p>
+    <hr>
+    <div><%- content %></div>
 </div>
-
 
 <%- include("partials/footer") %>
