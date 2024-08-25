@@ -48,7 +48,6 @@ app.get("/", function(req, res) {
     });
 });
 
-
 app.get("/about", function(req, res) {
   res.render("about", { aboutContent: aboutContent });
 });
@@ -85,11 +84,7 @@ app.post("/compose", function(req, res) {
   });
 });
 
-
-
 const url = `https://sociallensblog.onrender.com/`;
-
-
 
 const interval = 30000;
 
@@ -104,11 +99,6 @@ function reloadWebsite() {
 }
 
 setInterval(reloadWebsite, interval);
-
-//
-
-
-
 
 app.get("/posts/:postId", function(req, res) {
   const requestedPostId = req.params.postId;
@@ -127,25 +117,16 @@ app.get("/posts/:postId", function(req, res) {
     });
 });
 
-app.get("/search", function(req, res) {
+
+app.get("/searchblog", function(req, res) {
   const searchQuery = req.query.query;
 
   // Find posts where the title contains the search query (case-insensitive)
   Post.find({ title: new RegExp(searchQuery, 'i') })
     .then(posts => {
-      if (posts.length > 0) {
-        res.render("home", {
-          startingContent: homeStartingContent,
-          posts: posts,
-          noResults: false
-        });
-      } else {
-        res.render("home", {
-          startingContent: homeStartingContent,
-          posts: [],
-          noResults: true
-        });
-      }
+      res.render("searchResults", {
+        posts: posts
+      });
     })
     .catch(err => {
       console.log(err);
@@ -153,10 +134,24 @@ app.get("/search", function(req, res) {
     });
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+
+
+app.post("/delete", function(req, res) {
+  const postIdToDelete = req.body.postId;
+
+  Post.findByIdAndDelete(postIdToDelete)
+    .then(() => {
+      console.log(`Deleted post with ID: ${postIdToDelete}`);
+      res.redirect('/searchblog');  // Redirect to the search page after deletion
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send("Error deleting post.");
+    });
 });
 
 
 
-
+app.listen(3000, function() {
+  console.log("Server started on port 3000");
+});

@@ -1,109 +1,102 @@
 <%- include("partials/header") %>
 
 <style>
-  .search-form{
+  /* Global Styles */
+  body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 800;
+    font-style: oblique;
+    color: #53a2f7;
+    margin-bottom: 20px;
+  }
+
+  /* Banner Styles */
+  .main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    margin-bottom: 20px;
+  }
+
+  .banner-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Search Form Styles */
+  .search-form {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap:10px;
-  }
-  .mainpage{
-   
-    max-width: 1024px;
-    width:100vw;
-    margin: 0 auto;
-    
-  }
-  .form-control{
-    width:200px;
-  }
-  h1{
-    text-align: center;
-    font-weight: 800;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-style: oblique;
-    color: #53a2f7;
+    gap: 10px;
+    margin-bottom: 40px;
   }
 
-  .main-content {
-     height: 25vh;
-    
-    
-    }
-
-    /* Image styles */
-    .banner-image {
-      align-items: center;
-      justify-content: center;
-      height: 25vh;
-      width: 100%;
-      margin:2vw;
-      object-fit:contain;  /* Adds space below the image */
-    }
-
-</style>
-
-<div class="container main-content">
-  <img src="img/banner.jpg" alt="Banner Image" class="banner-image">
- 
-</div>
-
-<div class="mainpage">
-  <br>
-  <br><br>
-    <h1>Browse All Collection</h1>
-    <!-- <p> <%- startingContent %></p> -->
-    
-<!-- Search Form -->
-<form action="/search" method="GET" class="search-form">
-  <input type="text" name="query" placeholder="Search for a post" class="form-control" />
-  <button type="submit" class="btn btn-primary">Search</button>
-</form>
-<!-- <style>
-  .post-card {
-    border: 1px solid #ddd; /* Light grey border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Space inside the card */
-    margin: 16px 0; /* Space between cards */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
-    background-color: #fff; /* White background */
+  .form-control {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #53a2f7;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
   }
-  .post-card h1 {
-    font-size: 1.5em;
-    margin: 0 0 10px;
-  }
-  .post-card p {
-    margin: 0 0 10px;
-    color: #555; /* Darker text color */
-  }
-  .post-card a {
-    color: #007bff; /* Blue link color */
-    text-decoration: none; /* Remove underline */
-  }
-  .post-card a:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-</style> -->
 
+  .form-control:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
 
+  .btn-primary {
+    padding: 10px 20px;
+    background-color: #53a2f7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-<style>
+  .btn-primary:hover {
+    background-color: #007BFF;
+  }
+
+  /* Post Container Styles */
   .post-box {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
     width: 100%;
   }
 
   .post-container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
     gap: 20px;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .post-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media screen and (min-width: 1024px) {
@@ -114,64 +107,95 @@
 
   .post-item {
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #d2f1fc;
-    width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
 
   .post-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    margin-bottom: 15px;
   }
 
   .post-item h1 {
-    font-size: 24px;
-    margin-top: 20px;
+    font-size: 1.8em;
+    margin: 15px 0;
+    color: #007BFF;
   }
 
   .post-item p {
-    color: #555;
+    color: #777;
+    margin-bottom: 20px;
   }
 
   .post-item a {
     text-decoration: none;
     color: #007BFF;
     font-weight: bold;
+    transition: color 0.3s ease;
   }
+
+  .post-item a:hover {
+    color: #0056b3;
+  }
+  .post-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+
 </style>
 
-<div class="post-box">
-  <div class="post-container">
-    <% posts.forEach(function(post) { %>
-      <div class="post-item">
-        <img src="https://loremflickr.com/320/240/sunrise?random=<%= post._id %>" alt="Post Image">
+<div class="container main-content">
+  <img src="img/banner.jpg" alt="Banner Image" class="banner-image">
+</div>
 
+<div class="container">
+  <h1>Browse All Collection</h1>
 
-        <h1><%= post.title %></h1>
-        <p><em>Published on <%= post.date.toDateString() %></em></p>
-        <!-- <p style="font-size: 16px; color: #777; line-height: 1.5;">
-            <%- post.content.substring(0, 100) %>...
-        </p> -->
-        <a href="/posts/<%= post._id %>">Read More</a>
-      </div>
-    <% }); %>
+  <!-- Search Form -->
+  <form action="/search" method="GET" class="search-form">
+    <input type="text" name="query" placeholder="Search for a post" class="form-control" />
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <div class="post-box">
+    <div class="post-container">
+      <% posts.forEach(function(post) { %>
+       
+<div class="post-item">
+  <a href="/posts/<%= post._id %>"></a>
+  <img src="https://loremflickr.com/320/240/sunrise?random=<%= post._id %>" alt="Post Image">
+  <h1><%= post.title %></h1>
+  <p><em>Published on <%= post.date.toDateString() %></em></p>
+</div>
+      <% }); %>
+    </div>
   </div>
+
   <script>
     <% if (typeof noResults !== 'undefined' && noResults) { %>
       alert("No posts found matching your search query. Redirecting to home page.");
       window.location.href = "/";
     <% } %>
   </script>
+
 </div>
-
-
-
-  </div>
- 
 
 <%- include("partials/footer") %>

@@ -1,0 +1,134 @@
+<%- include("partials/header") %>
+<br>
+
+<div class="mainpage">
+    <h1>Search Results</h1>
+    
+    <% if (posts.length > 0) { %>
+        <ul>
+            <% posts.forEach(function(post) { %>
+                <li>
+                    <strong>Title:</strong> <%= post.title %> | 
+                    <strong>ID:</strong> <%= post._id %>
+                    <br>
+                    <br>
+                    <form action="/delete" method="POST" style="display:inline;">
+                        <input type="hidden" name="postId" value="<%= post._id %>">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </li>
+                <hr>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No results found for your search query.</p>
+    <% } %>
+    
+    <br><br>
+    <a href="/" class="btn btn-secondary">Back to Home</a>
+</div>
+
+<%- include("partials/footer") %>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.mainpage {
+    max-width: 1200px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    
+}
+/* 
+li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+li strong {
+    color: #555;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+p {
+    text-align: center;
+    color: #777;
+}
+
+@media (max-width: 600px) {
+    .mainpage {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-secondary {
+        width: 100%;
+    }
+}
+
+</style>
