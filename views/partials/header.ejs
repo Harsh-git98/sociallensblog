@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vigyann Corner</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #2e2d2d;
+      
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      border: none;
+      border-radius: 0;
+      background-color: rgba(0, 0, 0, 0.8); /* Slightly darker for more contrast */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: bold;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .navbar-nav li a {
+      color: #fff !important;
+      font-weight: 600;
+      padding: 15px 20px; /* Added more padding for a balanced look */
+    }
+
+    .navbar-nav li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffeb3b !important; /* Added a bright hover color for the text */
+    }
+
+    .navbar-nav li a:focus {
+      background-color: rgba(255, 255, 255, 0.1); /* Focus effect for accessibility */
+      outline: none;
+    }
+
+    .main-content {
+     height: 25vh;
+    
+    
+    }
+
+    /* Image styles */
+    .banner-image {
+      align-items: center;
+      justify-content: center;
+      height: 25vh;
+      width: 100%;
+      margin:2vw;
+      object-fit:contain;  /* Adds space below the image */
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 767px) {
+      .navbar-nav {
+        text-align: center;
+      }
+
+      .navbar-nav li {
+        float: none;
+      }
+
+      .navbar-nav li a {
+        padding: 10px 15px;
+        font-size: 1.1em; /* Slightly larger font for touch devices */
+      }
+    }
+
+    @media (max-width: 576px) {
+    
+
+      .navbar-brand {
+        font-size: 1.3em; /* Adjusted brand size for smaller screens */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand">The Social Lens Blog</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li id="home"><a href="/">Home</a></li>
+          <li id="about"><a href="/about">About Us</a></li>
+          <li id="contact"><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+  
+  
+
+  <div class="container main-content">
+    <img src="img/banner.jpg" alt="Banner Image" class="banner-image">
+   
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+

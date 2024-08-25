@@ -1,0 +1,155 @@
+<%- include("partials/header") %>
+
+<style>
+  .search-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+  }
+  .mainpage{
+   
+    max-width: 1024px;
+    width:100vw;
+    margin: 0 auto;
+    
+  }
+  .form-control{
+    width:200px;
+  }
+  h1{
+    text-align: center;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: oblique;
+    color: #53a2f7;
+  }
+</style>
+
+<div class="mainpage">
+  <br>
+  <br><br>
+    <h1>Browse All Collection</h1>
+    <!-- <p> <%- startingContent %></p> -->
+    
+<!-- Search Form -->
+<form action="/search" method="GET" class="search-form">
+  <input type="text" name="query" placeholder="Search for a post" class="form-control" />
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<!-- <style>
+  .post-card {
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Space inside the card */
+    margin: 16px 0; /* Space between cards */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    background-color: #fff; /* White background */
+  }
+  .post-card h1 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+  }
+  .post-card p {
+    margin: 0 0 10px;
+    color: #555; /* Darker text color */
+  }
+  .post-card a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none; /* Remove underline */
+  }
+  .post-card a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+</style> -->
+
+
+
+<style>
+  .post-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .post-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .post-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .post-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #d2f1fc;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+
+  .post-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .post-item h1 {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  .post-item p {
+    color: #555;
+  }
+
+  .post-item a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+  }
+</style>
+
+<div class="post-box">
+  <div class="post-container">
+    <% posts.forEach(function(post) { %>
+      <div class="post-item">
+        <img src="https://loremflickr.com/320/240/sunrise?random=<%= post._id %>" alt="Post Image">
+
+
+        <h1><%= post.title %></h1>
+        <p><em>Published on <%= post.date.toDateString() %></em></p>
+        <!-- <p style="font-size: 16px; color: #777; line-height: 1.5;">
+            <%- post.content.substring(0, 100) %>...
+        </p> -->
+        <a href="/posts/<%= post._id %>">Read More</a>
+      </div>
+    <% }); %>
+  </div>
+  <script>
+    <% if (typeof noResults !== 'undefined' && noResults) { %>
+      alert("No posts found matching your search query. Redirecting to home page.");
+      window.location.href = "/";
+    <% } %>
+  </script>
+</div>
+
+
+
+  </div>
+ 
+
+<%- include("partials/footer") %>

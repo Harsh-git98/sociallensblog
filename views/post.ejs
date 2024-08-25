@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+
+<style>
+    .post-main{
+        width: 90vw;
+        margin: 0 auto;
+        background-color: whitesmoke;
+        padding: 20px;
+
+
+    }
+    hr {
+    background-color: black; /* Sets the color of the hr */
+    height: 2px; /* Sets the thickness of the hr */
+    border: none; /* Removes any default borders */
+    width: 80%; /* Sets the horizontal length */
+    margin: 20px 0; /* Adds vertical spacing around the hr */
+}
+
+</style>
+
+<div class="post-main">
+<h1><%= title %></h1>
+
+<p><em>Published on <%= date %></em></p>
+<hr>
+<div><%- content %></div>
+</div>
+
+
+<%- include("partials/footer") %>
