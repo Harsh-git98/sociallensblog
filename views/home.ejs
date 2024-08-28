@@ -44,7 +44,7 @@
   /* Search Form Styles */
   .search-form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -97,12 +97,28 @@
     .post-container {
       grid-template-columns: repeat(2, 1fr);
     }
+    .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
   }
 
   @media screen and (min-width: 1024px) {
     .post-container {
       grid-template-columns: repeat(2, 1fr);
     }
+    .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
   }
 
   .post-item {
