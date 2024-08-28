@@ -37,15 +37,23 @@
     }
 
     .navbar-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .navbar-brand-img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar-brand-text {
       color: #2e2d2d;
       font-weight: bold;
       font-size: 1.8em;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-family: 'Indie Flower', cursive;
-      text-decoration: none;
-
-      
     }
 
     .navbar-toggle {
@@ -94,17 +102,10 @@
       .navbar-toggle {
         display: flex;
       }
-      .navbar-brand {
-      color: #2e2d2d;
-      font-weight: bold;
-      font-size: 1.2em;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-family: 'Indie Flower', cursive;
-      text-decoration: none;
 
-      
-    }
+      .navbar-brand-text {
+        font-size: 1.2em;
+      }
 
       .nav-links {
         position: fixed;
@@ -127,25 +128,16 @@
       .nav-links.active {
         transform: translateX(0);
       }
-
-      /* .navbar-toggle.active div:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .navbar-toggle.active div:nth-child(2) {
-        opacity: 0;
-      }
-
-      .navbar-toggle.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      } */
     }
   </style>
 </head>
 
 <body>
   <nav class="navbar">
-    <a href="/" class="navbar-brand">The Social Lens Blog</a>
+    <a href="/" class="navbar-brand">
+      <img src="img/sociallogo.png" alt="Social Lens Logo" class="navbar-brand-img">
+      <span class="navbar-brand-text">The Social Lens Blog</span>
+    </a>
     <div class="navbar-toggle" id="mobile-menu">
       <div></div>
       <div></div>
@@ -166,3 +158,4 @@
       document.getElementById("nav-links").classList.toggle("active");
     });
   </script>
+
