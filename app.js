@@ -63,14 +63,14 @@ app.get("/composedbyurvashi", function(req, res) {
 // Save the title and the post into our blogDB database
 app.post("/composedbyurvashi", function(req, res) {
   const title = req.body.postTitle;
-  const slug = _.kebabCase(title); // Convert title to a URL-friendly slug
+  const slug = req.body.postTitleID 
 
   if (!title) {
     return res.status(400).send("Title cannot be empty.");
   }
 
   const post = new Post({
-    _id: slug, // Set slug as the ID
+    _id: slug, 
     title: title,
     content: req.body.postBody
   });
