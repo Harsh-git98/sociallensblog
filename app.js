@@ -14,7 +14,9 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' })); // Adjust the limit as needed
+app.use(bodyParser.json({ limit: '1mb' })); // If you're also handling JSON payloads
+
 app.use(express.static("public"));
 
 mongoose.connect('mongodb+srv://shriharshranjangupta:NZVPxEcnTa2pXl0n@cluster0.azeu8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', 
