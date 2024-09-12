@@ -134,6 +134,14 @@
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
+  .btn-primary {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #007BFF;
+  transform: scale(1.05); /* Optional: Adding a slight scale effect */
+}
 
   .post-item img {
     width: 100%;
@@ -188,10 +196,13 @@
   <h1>Browse All Collection</h1>
 
   <!-- Search Form -->
-  <form action="/search" method="GET" class="search-form">
+  <!-- <form action="/search" method="GET" class="search-form">
     <input type="text" name="query" placeholder="Search for a post" class="form-control" />
     <button type="submit" class="btn btn-primary">Search</button>
-  </form>
+  </form> -->
+  <!-- <br>
+  <br>
+  <br> -->
 
   <div class="post-box">
     <div class="post-container">

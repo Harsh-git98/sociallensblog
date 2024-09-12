@@ -86,21 +86,21 @@ app.post("/composedbyurvashi", function(req, res) {
   });
 });
 
-const url = `https://sociallensblog.onrender.com/`;
+// const url = `https://sociallensblog.onrender.com/`;
 
-const interval = 30000;
+// const interval = 30000;
 
-function reloadWebsite() {
-  axios.get(url)
-    .then(response => {
-      console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
-    })
-    .catch(error => {
-      console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
-    });
-}
+// function reloadWebsite() {
+//   axios.get(url)
+//     .then(response => {
+//       console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
+//     })
+//     .catch(error => {
+//       console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
+//     });
+// }
 
-setInterval(reloadWebsite, interval);
+// setInterval(reloadWebsite, interval);
 
 app.get("/posts/:postId", function(req, res) {
   const requestedPostId = req.params.postId;
@@ -122,11 +122,30 @@ app.get("/posts/:postId", function(req, res) {
 
 app.get("/searchblog", function(req, res) {
   const searchQuery = req.query.query;
+  c
 
   // Find posts where the title contains the search query (case-insensitive)
   Post.find({ title: new RegExp(searchQuery, 'i') })
     .then(posts => {
       res.render("searchResults", {
+        posts: posts
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send("Error occurred while searching for posts.");
+    });
+});
+
+
+app.get("/search", function(req, res) {
+  const searchQuery = req.query.query;
+
+  // Find posts where the title contains the search query (case-insensitive)
+  Post.find({ title: new RegExp(searchQuery, 'i') })
+    .then(posts => {
+      res.render("home", {
+        startingContent: homeStartingContent,
         posts: posts
       });
     })
